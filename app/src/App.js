@@ -3,6 +3,11 @@ import './App.css';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
+firebase.initializeApp({
+  apiKey:"AIzaSyAqq-REtF1lO8r-ZAWnU577_Qs4q2_i_SM",
+  authDomain: "fir-auth-8691e.firebaseapp.com"
+})
+
 class App extends Component {
   state={
     isSignedIn: false
@@ -31,7 +36,10 @@ class App extends Component {
         {this.state.isSignedIn ? (
           <div>Signed In</div>
         ) : (
-          <div>Not Signed In</div>
+          <StyledFirebaseAuth
+          uiConfig={this.uiConfig}
+          firebaseAuth={firebase.auth()}
+          />
         )}
       </div>
     )
